@@ -34,7 +34,7 @@
 | prefecture_id | integer    | null: false                   |配送元の地域(都道府県)
 | delivery_id   | integer    | null: false                   |発送日の目安
 | price         | integer    | null: false                   |価格
-| users         | references | null: false foreign_key: true |出品者のID
+| user          | references | null: false foreign_key: true |出品者のID
 
 
 ### Association
@@ -46,8 +46,8 @@
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| users       | references | null: false, foreign_key: true |購入者のID
-| products    | references | null: false  foreign_key: true |商品のID
+| user        | references | null: false, foreign_key: true |購入者のID
+| product     | references | null: false  foreign_key: true |商品のID
 
 ### Association
 
@@ -66,7 +66,7 @@
 | street       | string   | null: false                   |番地
 | building     | string   |                               |建物名
 | phone_number | string   | null: false                   |電話番号
-| orders       |references| null: false  foreign_key: true|購入情報のID
+| order        |references| null: false  foreign_key: true|購入情報のID
 
 ### Association
 
