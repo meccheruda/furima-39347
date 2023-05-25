@@ -24,17 +24,17 @@
 
 ## products テーブル  (商品情報)
 
-| Column        | Type    | Options                       |
-| ------------- | ------- | ----------------------------- |
-| item_name     | string  | null: false                   |商品名
-| description   |  text   | null: false                   |商品の説明
-| category_id   | integer | null: false                   |カテゴリー
-| condition_id  | integer | null: false                   |商品の状態
-| postage_id    | integer | null: false                   |配送料の負担
-| origin_id     | integer | null: false                   |配送元の地域
-| delivery_id   | integer | null: false                   |発送日の目安
-| price         | integer | null: false                   |価格
-| users_id      | integer | null: false foreign_key: true |出品者のID
+| Column        | Type       | Options                       |
+| ------------- | ---------- | ----------------------------- |
+| item_name     | string     | null: false                   |商品名
+| description   |  text      | null: false                   |商品の説明
+| category_id   | integer    | null: false                   |カテゴリー
+| condition_id  | integer    | null: false                   |商品の状態
+| postage_id    | integer    | null: false                   |配送料の負担
+| prefecture_id | integer    | null: false                   |配送元の地域(都道府県)
+| delivery_id   | integer    | null: false                   |発送日の目安
+| price         | integer    | null: false                   |価格
+| users         | references | null: false foreign_key: true |出品者のID
 
 
 ### Association
@@ -44,11 +44,10 @@
 
 ## orders テーブル  (商品購入情報)
 
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| users_id    | integer | null: false, foreign_key: true |購入者のID
-| products_id | integer | null: false  foreign_key: true |商品のID
-| addresses_id| integer | null: false  foreign_key: true |発送先のID
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| users       | references | null: false, foreign_key: true |購入者のID
+| products    | references | null: false  foreign_key: true |商品のID
 
 ### Association
 
@@ -59,15 +58,15 @@
 
 ## addresses テーブル  (発送先情報)
 
-| Column       | Type    | Options                       |
-| ------------ | ------- | ----------------------------- |
-| postal_code  | string  | null: false                   |郵便番号
-| prefecture   | integer | null: false                   |都道府県
-| city         | string  | null: false                   |市区町村
-| street       | string  | null: false                   |番地
-| building     | string  |                               |建物名
-| phone_number | string  | null: false                   |電話番号
-| orders_id    | integer | null: false  foreign_key: true|購入情報のID
+| Column       | Type     | Options                       |
+| ------------ | -------- | ----------------------------- |
+| postal_code  | string   | null: false                   |郵便番号
+| prefecture_id| integer  | null: false                   |都道府県
+| city         | string   | null: false                   |市区町村
+| street       | string   | null: false                   |番地
+| building     | string   |                               |建物名
+| phone_number | string   | null: false                   |電話番号
+| orders       |references| null: false  foreign_key: true|購入情報のID
 
 ### Association
 
