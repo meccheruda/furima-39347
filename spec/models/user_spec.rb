@@ -22,7 +22,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
-
       it 'emailに@が含んでなければ登録できない' do
         @user.email = 'testemail.com'
         @user.valid?
@@ -92,6 +91,29 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Birth date can't be blank")
       end
+
+
+      it '数字のみのpasswordだと登録できない' do
+        @user.password = '111111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", "Password is invalid. Include both letters and numbers")
+      end
+      it '全角文字を含むpasswordでは登録できない' do
+        @user.email = 'abcd１２３４'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
+      it 'first_name_kanaが空だと登録できない' do
+        @user.first_name_kana = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana can't be blank")
+      end
+      it 'last_name_kanaが空だと登録できない' do
+        @user.last_name_kana = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana can't be blank")
+      end
+
     end
   end
 end
