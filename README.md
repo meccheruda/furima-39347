@@ -18,11 +18,11 @@
 
 ### Association
 
-- has_many :items
+- has_many :products
 - has_many :orders
 
 
-## items テーブル  (商品情報)
+## products テーブル  (商品情報)
 
 | Column        | Type       | Options                       |
 | ------------- | ---------- | ----------------------------- |
@@ -47,12 +47,12 @@
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |購入者のID
-| item        | references | null: false  foreign_key: true |商品のID
+| product     | references | null: false  foreign_key: true |商品のID
 
 ### Association
 
 - belongs_to :user
-- belongs_to :item
+- belongs_to :product
 - has_one :address
 
 
