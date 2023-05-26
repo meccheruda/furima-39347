@@ -6,13 +6,13 @@
 
 | Column             | Type    | Options                      |
 | ------------------ | ------- | ---------------------------- |
-| name               | string  | null: false                  |ニックネーム
+| nickname           | string  | null: false                  |ニックネーム
 | email              | string  | null: false unique: true     |メールアドレス
 | encrypted_password | string  | null: false                  |パスワード
-| first_name         | string  | null: false                  |苗字
-| last_name          | string  | null: false                  |名前
-| first_name_kana    | string  | null: false                  |苗字（かな）
-| last_name_kana     | string  | null: false                  |名前（かな）
+| first_name         | string  | null: false                  |名前
+| last_name          | string  | null: false                  |苗字
+| first_name_kana    | string  | null: false                  |名前（かな）
+| last_name_kana     | string  | null: false                  |苗字（かな）
 | birth_date         |  date   | null: false                  |生年月日
 
 
