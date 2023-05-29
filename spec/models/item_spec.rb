@@ -57,6 +57,11 @@ describe '商品出品機能' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price can't be blank")
     end
+    it 'priceが全角数字だと登録できない' do
+      @item.price = '５００'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is not a number")
+    end
 
   end
 end
