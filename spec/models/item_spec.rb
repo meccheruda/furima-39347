@@ -60,7 +60,22 @@ RSpec.describe Item, type: :model do
       it 'priceが全角数字だと登録できない' do
         @item.price = '５００'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is not a number')
+        expect(@item.errors.full_messages).to include('Price should be a valid number')
+      end
+      it '価格が300円未満では登録できない' do
+        @item.price = 299
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price should be a valid number')
+      end
+      it '価格が9999999円を超えると登録できない' do
+        @item.price = 99999999999999
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price should be a valid number')
+      end
+      it 'userが紐付いていなければ登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end
