@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_one :order
 
   validates :item_name, :description, :image, :price, presence: true
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
