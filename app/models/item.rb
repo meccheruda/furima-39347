@@ -3,6 +3,10 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_one :order
 
+  def sold_out?
+    Order.exists?(item_id: id)
+  end
+
   validates :item_name, :description, :image, :price, presence: true
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
