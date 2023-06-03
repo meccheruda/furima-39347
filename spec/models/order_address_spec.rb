@@ -51,14 +51,14 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_numberが10桁以上11桁以内の半角数値のみじゃないと保存できないこと' do
         @order_address.phone_number = '111111'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number enter 10 or 11 digits")
+        expect(@order_address.errors.full_messages).to include('Phone number enter 10 or 11 digits')
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_address.user_id = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("User can't be blank")
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @order_address.token = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Token can't be blank")
