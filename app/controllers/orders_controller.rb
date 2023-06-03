@@ -38,6 +38,6 @@ class OrdersController < ApplicationController
   end
 
   def item_call
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
 end
